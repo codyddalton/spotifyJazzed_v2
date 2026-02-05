@@ -3,6 +3,12 @@ const app = express();
 const axios = require('axios');
 require('dotenv').config();
 const querystring = require('querystring');
+import cors from "cors";
+
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
 
 const PORT = process.env.PORT || 8888;
 const CLIENT_ID = process.env.CLIENT_ID;
