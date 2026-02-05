@@ -1,8 +1,8 @@
-const express = require('express');
+import express from "express";
+import axios from "axios";
+import querystring from "querystring";
+import "dotenv/config";
 const app = express();
-const axios = require('axios');
-require('dotenv').config();
-const querystring = require('querystring');
 import cors from "cors";
 
 app.use(cors({
