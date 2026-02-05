@@ -13,7 +13,7 @@ app.use(cors({
 const PORT = process.env.PORT || 8888;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-const REDIRECTURI = process.env.REDIRECTURI;
+const REDIRECT_URI = process.env.REDIRECT_URI;
 
 //Utility function for random string generation
 const generateRandomString = length => {
@@ -37,7 +37,7 @@ app.get('/login', (req, res) => {
   const queryParams = querystring.stringify({
     client_id: CLIENT_ID,
     response_type:'code',
-    redirect_uri: REDIRECTURI,
+    redirect_uri: REDIRECT_URI,
     state: state,
     scope: scope
   })
@@ -55,7 +55,7 @@ app.get('/logged', (req, res) => {
     data: querystring.stringify({
       grant_type: 'authorization_code',
       code: code,
-      redirect_uri: REDIRECTURI
+      redirect_uri: REDIRECT_URI
     }),
     headers: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -114,5 +114,5 @@ app.get('/refresh_token', (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
-  console.log(CLIENT_ID, CLIENT_SECRET, REDIRECTURI);
+  console.log(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 });
